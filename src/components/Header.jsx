@@ -2,7 +2,10 @@
 // JSX --- syntax extension of JavaScript --- HTML like code
 // Default and Named Exports and Imports
 
+import useOnlineStatus from "../utils/useOnlinestatus";
+
 function Header() {
+  const onlineStatus = useOnlineStatus();
   return (
     <nav className="flex justify-between  px-4 border-b-2">
       <img
@@ -12,6 +15,7 @@ function Header() {
         height="80px"
       />
       <ul className="flex items-center mr-10 gap-10">
+        <li>{onlineStatus ? "🟢" : "🔴"}</li>
         <li>
           <a href="">Search</a>
         </li>
