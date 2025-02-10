@@ -24,3 +24,13 @@ New virtual DOM tree is created as soon as we do any change in real DOM with the
 Diffing algorithm --- compares both the virtual DOM trees and find the node which is changed
 
 Only changed node will be updated in real DOM
+
+Functional Component --- new way
+Class Based Component --- old way
+
+Single Page Application - (SPA) => one HTML Page  
+rendering components in this single HTML Page
+
+Client Side Routing --- no server is involved
+
+npm package to implement react router ---- react-router-dom

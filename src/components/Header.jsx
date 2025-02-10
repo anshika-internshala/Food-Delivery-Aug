@@ -3,6 +3,7 @@
 // Default and Named Exports and Imports
 
 import useOnlineStatus from "../utils/useOnlinestatus";
+import { Link } from "react-router-dom";
 
 function Header() {
   const onlineStatus = useOnlineStatus();
@@ -17,10 +18,10 @@ function Header() {
       <ul className="flex items-center mr-10 gap-10">
         <li>{onlineStatus ? "🟢" : "🔴"}</li>
         <li>
-          <a href="">Search</a>
+          <a href="/search">Search</a>
         </li>
         <li>
-          <a href="">Offers</a>
+          <Link to="/offers">Offers</Link>
         </li>
         <li>
           <a href="">Help</a>

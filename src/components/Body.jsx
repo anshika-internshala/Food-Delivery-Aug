@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Search from "./Search";
 import TopRatedRestaurants from "./TopRatedRestaurants";
+import { Link } from "react-router-dom";
 
 function Body() {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -53,7 +54,9 @@ function Body() {
 
       <div className="flex flex-wrap">
         {filteredRestaurants.map((res) => (
-          <RestaurantCard resDetails={res.info} key={res.info.id} />
+          <Link to={`/restaurant/${res.info.id}`} key={res.info.id}>
+            <RestaurantCard resDetails={res.info} />
+          </Link>
         ))}
       </div>
     </div>
