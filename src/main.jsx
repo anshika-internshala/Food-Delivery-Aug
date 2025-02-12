@@ -7,6 +7,7 @@ import Offers from "./components/Offers.jsx";
 import RestaurantDetails from "./components/RestaurantDetails.jsx";
 import Body from "./components/Body.jsx";
 import Error from "./components/Error.jsx";
+import Cart from "./components/Cart.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const appRouter = createBrowserRouter([
       {
         path: "offers",
         element: <Offers />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "/restaurant/:id", // dynamic routing

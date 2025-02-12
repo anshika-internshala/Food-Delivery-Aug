@@ -1,12 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Search from "./Search";
 import TopRatedRestaurants from "./TopRatedRestaurants";
 import { Link } from "react-router-dom";
+import userContext from "../utils/userContext";
 
 function Body() {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const userInfo = useContext(userContext);
 
   useEffect(() => {
     // API calls --- fetch data from server
@@ -41,6 +43,12 @@ function Body() {
 
     setFilteredRestaurants(topRatedRestaurants);
   }
+
+  function persistData(value) {
+    localStorage.setItem("userName", value);
+    userInfo.setUserName(value);
+  }
+
   return (
     <div className="bg-slate-50 w-3/4  mx-auto my-8 h-screen">
       {console.log("Body component is rendered")}
@@ -51,6 +59,12 @@ function Body() {
       <Search filterFunc={filterRestaurants} restaurants={allRestaurants} />
 
       <TopRatedRestaurants topRatedFunc={filterTopRatedRestaurants} />
+
+      <input
+        type="text"
+        className="border-2"
+        onChange={(e) => persistData(e.target.value)}
+      />
 
       <div className="flex flex-wrap">
         {filteredRestaurants.map((res) => (

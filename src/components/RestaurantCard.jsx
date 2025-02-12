@@ -1,5 +1,12 @@
+import userContext from "../utils/userContext";
+import { useContext } from "react";
+
 function RestaurantCard({ resDetails }) {
   const { name, avgRating, cloudinaryImageId, cuisines } = resDetails;
+  const userInfo = useContext(userContext);
+
+  const loggedInUser = localStorage.getItem("userName");
+
   return (
     <div className="m-4 border w-fit p-3">
       <img
@@ -11,6 +18,7 @@ function RestaurantCard({ resDetails }) {
       <h2 className="font-bold">{name}</h2>
       <span>{avgRating}</span>
       <p>{cuisines}</p>
+      <p>{loggedInUser ? loggedInUser : userInfo.loggedInUser}</p>
     </div>
   );
 }

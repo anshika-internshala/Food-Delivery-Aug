@@ -34,3 +34,21 @@ rendering components in this single HTML Page
 Client Side Routing --- no server is involved
 
 npm package to implement react router ---- react-router-dom
+
+Props Drilling --> passing props from parent to deep nested child component
+Context ---> Helps us avoid props drilling. Helps to create shared context which can be used by any React component. Context is a part of React (useContext Hook)
+
+Redux ----> State Management. Separate JS Library called redux needs to be installed. Helps us avoid props drilling.
+
+react-redux , reduxtookit
+
+// Add Items to Cart using Redux
+
+Store ---> storing shared information we use Store
+Slices ----> cart slice (store data related to cart) , payment Slice (store data related to payment) , userSlice(store data related to user)
+
+Clicking on Add Button ----> an action gets dispatched (useDispatch)
+Action calls reducer function ---> every action will have a reducer function
+Reducer function will update items in the cart
+
+useSelector --- selector to basically select items from the cart
