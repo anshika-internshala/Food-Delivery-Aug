@@ -5,8 +5,9 @@
 import useOnlineStatus from "../utils/useOnlinestatus";
 import { Link } from "react-router-dom";
 import userContext from "../utils/userContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
+import Login from "./Login";
 
 function Header() {
   const onlineStatus = useOnlineStatus();
@@ -15,6 +16,16 @@ function Header() {
   const cartItems = useSelector((store) => store.cart.items);
 
   const loggedInUser = localStorage.getItem("userName");
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  function openModal() {
+    setIsVisible(true);
+  }
+
+  function closeModal() {
+    setIsVisible(false);
+  }
 
   return (
     <nav className="flex justify-between  px-4 border-b-2">
@@ -37,13 +48,14 @@ function Header() {
           <a href="">Help</a>
         </li>
         <li>
-          <a href="">SignIn</a>
+          <Link onClick={openModal}>SignIn</Link>
         </li>
         <li>
           <Link to="/cart">Cart</Link>
           <span> {cartItems.length}</span>
         </li>
       </ul>
+      <Login isVisible={isVisible} onClose={closeModal}></Login>
     </nav>
   );
 }

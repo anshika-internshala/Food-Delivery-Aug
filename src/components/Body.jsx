@@ -19,6 +19,7 @@ function Body() {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setFilteredRestaurants(
           data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants

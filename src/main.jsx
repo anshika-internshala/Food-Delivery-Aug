@@ -4,10 +4,15 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Search from "./components/Search.jsx";
 import Offers from "./components/Offers.jsx";
-import RestaurantDetails from "./components/RestaurantDetails.jsx";
 import Body from "./components/Body.jsx";
 import Error from "./components/Error.jsx";
-import Cart from "./components/Cart.jsx";
+import { lazy, Suspense } from "react";
+
+// Lazy Loading
+const Cart = lazy(() => import("./components/Cart.jsx"));
+const RestaurantDetails = lazy(() =>
+  import("./components/RestaurantDetails.jsx")
+);
 
 const appRouter = createBrowserRouter([
   {
@@ -29,11 +34,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:id", // dynamic routing
-        element: <RestaurantDetails />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <RestaurantDetails />,
+          </Suspense>
+        ),
       },
     ],
   },
@@ -42,3 +55,6 @@ const appRouter = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={appRouter} />
 );
+
+// Lazy loading
+// On Demand loading

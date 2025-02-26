@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, addItem, removeItem } from "../utils/cartSlice";
 
 function Cart() {
   const cartItems = useSelector((store) => store.cart.items);
@@ -7,6 +7,14 @@ function Cart() {
 
   function clear() {
     dispatch(clearCart());
+  }
+
+  function handleAddItem(item) {
+    dispatch(addItem(item));
+  }
+
+  function handleRemoveItem(item) {
+    dispatch(removeItem(item));
   }
 
   return (
@@ -33,9 +41,20 @@ function Cart() {
 
             <button
               className="border bg-green-300 h-8 relative top-16 right-5"
+              onClick={() => handleRemoveItem(res)}
+            >
+              -
+            </button>
+
+            <span className="border bg-green-300 h-8 relative top-16 right-5">
+              {res.quantity}
+            </span>
+
+            <button
+              className="border bg-green-300 h-8 relative top-16 right-5"
               onClick={() => handleAddItem(res)}
             >
-              Add +
+              +
             </button>
           </div>
         );
