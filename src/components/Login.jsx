@@ -9,27 +9,34 @@ function Login(props) {
   const [isSignUp, setIsSignUp] = useState(true);
 
   function handleRegister() {
-    const response = fetch("http://localhost:8009/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullName: fullName,
-        email: email,
-        password: password,
-      }),
-    });
+    console.log("coming here");
+
+    const response = fetch(
+      "https://food-delivery-aug.onrender.com/api/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: fullName,
+          email: email,
+          password: password,
+        }),
+      }
+    );
 
     const result = response.then((data) => data.json());
+    console.log("result", result);
 
     result.then((data) => {
       console.log("registration done");
+      props.onClose();
     });
   }
 
   function handleLogin() {
-    const response = fetch("http://localhost:8009/api/login", {
+    const response = fetch("https://food-delivery-aug.onrender.com/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

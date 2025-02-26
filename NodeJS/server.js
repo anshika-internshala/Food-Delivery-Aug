@@ -5,7 +5,7 @@ import { userRoutes } from "./routes/users.routes.js";
 import cors from "cors";
 
 const app = express();
-const port = 8009;
+const port = process.env.PORT || 8009;
 
 app.listen(port, () => {
   console.log("Application running successfully");
